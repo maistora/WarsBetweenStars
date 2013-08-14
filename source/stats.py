@@ -10,6 +10,7 @@ class Stats:
 
     db_file = 'game.db'
     db_rec = 'scores'
+    stats_font = pygame.font.get_default_font()
 
     p_health_pos = (760, 650)
     p_shield_pos = (760, 670)
@@ -46,7 +47,7 @@ class Stats:
 
         """
         pygame.font.init()
-        font = pygame.font.Font(None, 20)
+        font = pygame.font.Font(self.stats_font, 12)
 
         health_msg = self.__get_health_status()
         health_txt = font.render(health_msg, 1, self.health_color)
@@ -188,7 +189,7 @@ class Stats:
         return items
 
     def congratz(self):
-        font = pygame.font.Font(None, 100)
+        font = pygame.font.Font(self.stats_font, 100)
         congratz = "YOU WON"
         congratz_txt = font.render(congratz, 1, self.color)
 
@@ -199,7 +200,7 @@ class Stats:
         self.stats.__setitem__('congratz', (congratz_txt, cgrtz_rect))
 
     def lose(self):
-        font = pygame.font.Font(None, 100)
+        font = pygame.font.Font(self.stats_font, 100)
         lose = "GAME OVER"
         lose_txt = font.render(lose, 1, self.color_red)
 
